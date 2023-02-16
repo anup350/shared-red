@@ -1,0 +1,11 @@
+name: shared-workflow-red
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "dev"
+job:
+  shared_dispatch_red:
+    uses: anup350/shared-blue/.github/workflows/blue.yaml@main
+    with:
+      print-colours: true
