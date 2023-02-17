@@ -23,4 +23,4 @@ jobs:
     with:
       enable-code-scans: true
     secrets:
-      ghcr_token: ${{ secrets.API_TOKEN_GITHUB }}
+      ghcr_token: ${{ secrets.ghcr_token }}
