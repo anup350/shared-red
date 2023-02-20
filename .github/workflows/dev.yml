@@ -6,6 +6,9 @@ on:
         type: string
         description: environment to deploy to
         required: true
+      secrets:
+        API_TOKEN_GITHUB:
+          required: true
 jobs:
   print_red:
     name: Print from red
