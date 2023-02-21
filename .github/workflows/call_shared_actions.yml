@@ -1,0 +1,27 @@
+---
+name: Shared actions
+on:
+  push:
+    branches:
+      - main
+jobs:
+  calling_shared_action_definitions:
+    name: Calling from red
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display shared action content
+        run: echo "Calling shared-ci repo red repo."
+  dispatch:
+    needs: calling_shared_action_definitions
+    strategy:
+      matrix:
+        repo:
+          - anup350/shared-ci
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.API_TOKEN_GITHUB }}
+          repository: ${{ matrix.repo }}
+          event-type: update-reports
